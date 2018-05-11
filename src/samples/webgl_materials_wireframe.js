@@ -20,7 +20,6 @@ const fragmentShader = `
     }
 
     void main() {
-
         gl_FragColor.rgb = mix( vec3( 1.0 ), vec3( 0.2 ), edgeFactorTri() );
         gl_FragColor.a = 1.0;
     }
@@ -47,25 +46,8 @@ export class webgl_materials_wireframe {
         let material = new THREE.MeshBasicMaterial( { wireframe: true } );
 
         let mesh = new THREE.Mesh( geometry, material );
-        mesh.position.x = -150;
-        this.scene.add( mesh );
-
-        //right box
-        geometry = new THREE.BoxBufferGeometry( size, size, size );
-        geometry = geometry.toNonIndexed();
-
-        this.setupAttributes( geometry );
-
-        material = new THREE.ShaderMaterial( {
-            uniforms: {},
-            vertexShader,
-            fragmentShader,
-        } );
-
-        material.extensions.derivatives = true;
-
-        mesh = new THREE.Mesh( geometry, material );
-        mesh.position.x = 150;
+        mesh.position.x = 0;
+        mesh.position.y = -150;
         this.scene.add( mesh );
 
         //left box ball
@@ -83,7 +65,27 @@ export class webgl_materials_wireframe {
         material.extensions.derivatives = true;
 
         mesh = new THREE.Mesh( geometry, material );
-        mesh.position.x = -150;
+        mesh.position.x = 0;
+        mesh.position.y = -150;
+        this.scene.add( mesh );
+
+        //right box
+        geometry = new THREE.BoxBufferGeometry( size, size, size );
+        geometry = geometry.toNonIndexed();
+
+        this.setupAttributes( geometry );
+
+        material = new THREE.ShaderMaterial( {
+            uniforms: {},
+            vertexShader,
+            fragmentShader,
+        } );
+
+        material.extensions.derivatives = true;
+
+        mesh = new THREE.Mesh( geometry, material );
+        mesh.position.x = 0;
+        mesh.position.y = 100;
         this.scene.add( mesh );
 
         // renderer

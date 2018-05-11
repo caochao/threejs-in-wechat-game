@@ -1,4 +1,5 @@
 import THREE from "../libs/three/index"
+require("../libs/three/js/controls/OrbitControls")
 
 export class webgl_panorama_cube {
     constructor()
