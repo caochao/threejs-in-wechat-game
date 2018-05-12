@@ -1,6 +1,6 @@
 import THREE from "../libs/three/index"
 
-import * as Zlib from "../libs/three/js/libs/inflate.min"
+import {Zlib} from "../libs/three/js/libs/inflate.min"
 window.Zlib = Zlib
 require("../libs/three/js/loaders/FBXLoader")
 
@@ -71,9 +71,9 @@ export class webgl_loader_fbx {
                     child.receiveShadow = true;
                 }
             } );
-
+            
             this.scene.add( object );
-        } );
+        }.bind(this) );
 
         this.renderer = new THREE.WebGLRenderer( { antialias: true, canvas:canvas } );
         this.renderer.setPixelRatio( window.devicePixelRatio );
